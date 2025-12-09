@@ -5,8 +5,8 @@ import "screens"
 
 Window {
     id: root
-    width: 1280
-    height: 720
+    width: 800
+    height: 480
     visible: true
     title: "SCAN.RN - Photo Scanner Kiosk"
     color: "#F9FAFB"

@@ -21,20 +21,20 @@ Item {
 
         Column {
             anchors.centerIn: parent
-            spacing: 80
+            spacing: Math.max(40, root.height * 0.1)
 
             Text {
                 text: "SCAN.RN"
-                font.pixelSize: 72
+                font.pixelSize: Math.min(root.width * 0.09, 64)
                 font.weight: Font.Bold
-                font.letterSpacing: 8
+                font.letterSpacing: Math.min(root.width * 0.01, 8)
                 color: "white"
                 anchors.horizontalCenter: parent.horizontalCenter
             }
 
             Text {
                 text: "Tap to begin scanning"
-                font.pixelSize: 28
+                font.pixelSize: Math.min(root.width * 0.032, 24)
                 font.weight: Font.Medium
                 color: "#E6FFFFFF" // rgba(255, 255, 255, 0.9)
                 anchors.horizontalCenter: parent.horizontalCenter

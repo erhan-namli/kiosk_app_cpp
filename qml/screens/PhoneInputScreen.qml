@@ -21,12 +21,12 @@ Item {
 
         Column {
             anchors.centerIn: parent
-            spacing: 20
-            width: 500
+            spacing: Math.max(8, parent.height * 0.02)
+            width: Math.min(parent.width * 0.85, 500)
 
             Text {
                 text: "Enter Your Phone Number"
-                font.pixelSize: 36
+                font.pixelSize: Math.min(parent.width * 0.05, 32)
                 font.weight: Font.SemiBold
                 color: "#1F2937"
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -35,24 +35,24 @@ Item {
             // Phone display
             Rectangle {
                 width: parent.width
-                height: 120
+                height: Math.max(60, parent.height * 0.15)
                 color: "white"
-                radius: 16
+                radius: 12
 
                 Column {
                     anchors.centerIn: parent
-                    spacing: 8
+                    spacing: 4
 
                     Text {
                         text: "Phone Number"
-                        font.pixelSize: 14
+                        font.pixelSize: Math.min(root.width * 0.018, 14)
                         color: "#6B7280"
                         anchors.horizontalCenter: parent.horizontalCenter
                     }
 
                     Text {
                         text: phoneNumber.length === 0 ? "(___) ___-____" : formatPhone(phoneNumber)
-                        font.pixelSize: 36
+                        font.pixelSize: Math.min(root.width * 0.04, 28)
                         font.weight: Font.Medium
                         color: phoneNumber.length === 0 ? "#D1D5DB" : "#1F2937"
                         anchors.horizontalCenter: parent.horizontalCenter
@@ -63,21 +63,21 @@ Item {
             // Number pad
             Grid {
                 columns: 3
-                spacing: 16
+                spacing: Math.max(8, root.width * 0.015)
                 anchors.horizontalCenter: parent.horizontalCenter
 
                 Repeater {
                     model: ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
                     delegate: Button {
-                        width: 150
-                        height: 80
+                        width: Math.min((root.width * 0.25), 110)
+                        height: Math.min((root.height * 0.12), 60)
                         text: modelData
-                        font.pixelSize: 36
+                        font.pixelSize: Math.min(root.width * 0.035, 28)
                         font.weight: Font.Medium
 
                         background: Rectangle {
                             color: parent.pressed ? "#E5E7EB" : (parent.hovered ? "#F3F4F6" : "white")
-                            radius: 16
+                            radius: 12
                         }
 
                         onClicked: {
@@ -92,15 +92,15 @@ Item {
             // Zero button
             Button {
                 width: parent.width
-                height: 80
+                height: Math.min((root.height * 0.12), 60)
                 text: "0"
-                font.pixelSize: 36
+                font.pixelSize: Math.min(root.width * 0.035, 28)
                 font.weight: Font.Medium
                 anchors.horizontalCenter: parent.horizontalCenter
 
                 background: Rectangle {
                     color: parent.pressed ? "#E5E7EB" : (parent.hovered ? "#F3F4F6" : "white")
-                    radius: 16
+                    radius: 12
                 }
 
                 onClicked: {
@@ -112,18 +112,18 @@ Item {
 
             // Action buttons
             Row {
-                spacing: 16
+                spacing: Math.max(8, root.width * 0.015)
                 anchors.horizontalCenter: parent.horizontalCenter
 
                 Button {
-                    width: 242
-                    height: 80
+                    width: Math.min((root.width * 0.4), 200)
+                    height: Math.min((root.height * 0.12), 60)
                     text: "Delete"
-                    font.pixelSize: 20
+                    font.pixelSize: Math.min(root.width * 0.025, 18)
 
                     background: Rectangle {
                         color: parent.pressed ? "#B91C1C" : (parent.hovered ? "#DC2626" : "#EF4444")
-                        radius: 16
+                        radius: 12
                     }
 
                     contentItem: Text {
@@ -142,16 +142,16 @@ Item {
                 }
 
                 Button {
-                    width: 242
-                    height: 80
+                    width: Math.min((root.width * 0.4), 200)
+                    height: Math.min((root.height * 0.12), 60)
                     text: "Continue"
-                    font.pixelSize: 24
+                    font.pixelSize: Math.min(root.width * 0.028, 20)
                     font.weight: Font.SemiBold
                     enabled: phoneNumber.length === 10
 
                     background: Rectangle {
                         color: parent.enabled ? (parent.pressed ? "#1E40AF" : (parent.hovered ? "#1D4ED8" : "#2563EB")) : "#D1D5DB"
-                        radius: 16
+                        radius: 12
                     }
 
                     contentItem: Text {

@@ -24,13 +24,13 @@ Item {
 
         Column {
             anchors.centerIn: parent
-            spacing: 30
-            width: 600
+            spacing: Math.max(15, root.height * 0.03)
+            width: Math.min(root.width * 0.85, 600)
 
             // Success icon
             Text {
                 text: "✓"
-                font.pixelSize: 120
+                font.pixelSize: Math.min(root.width * 0.15, 90)
                 font.weight: Font.Bold
                 color: "white"
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -38,7 +38,7 @@ Item {
 
             Text {
                 text: "All Done!"
-                font.pixelSize: 48
+                font.pixelSize: Math.min(root.width * 0.06, 38)
                 font.weight: Font.Bold
                 color: "white"
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -46,7 +46,7 @@ Item {
 
             Text {
                 text: "Your scans have been sent via SMS"
-                font.pixelSize: 24
+                font.pixelSize: Math.min(root.width * 0.028, 20)
                 color: "#F2FFFFFF" // rgba(255, 255, 255, 0.95)
                 anchors.horizontalCenter: parent.horizontalCenter
                 wrapMode: Text.WordWrap
@@ -56,15 +56,15 @@ Item {
 
             // Phone number display
             Rectangle {
-                width: 400
-                height: 80
+                width: Math.min(root.width * 0.6, 350)
+                height: Math.min(root.height * 0.13, 70)
                 radius: 12
                 color: "#33FFFFFF" // rgba(255, 255, 255, 0.2)
                 anchors.horizontalCenter: parent.horizontalCenter
 
                 Text {
                     text: formatPhone(phoneNumber)
-                    font.pixelSize: 32
+                    font.pixelSize: Math.min(root.width * 0.04, 28)
                     font.weight: Font.SemiBold
                     color: "white"
                     anchors.centerIn: parent
@@ -73,7 +73,7 @@ Item {
 
             Text {
                 text: "Check your phone for a text message\nwith your scanned photos"
-                font.pixelSize: 18
+                font.pixelSize: Math.min(root.width * 0.02, 16)
                 color: "#E6FFFFFF"
                 anchors.horizontalCenter: parent.horizontalCenter
                 wrapMode: Text.WordWrap
@@ -82,16 +82,16 @@ Item {
             }
 
             Button {
-                width: 400
-                height: 80
+                width: Math.min(root.width * 0.6, 350)
+                height: Math.min(root.height * 0.13, 70)
                 text: "Done"
-                font.pixelSize: 32
+                font.pixelSize: Math.min(root.width * 0.04, 28)
                 font.weight: Font.Bold
                 anchors.horizontalCenter: parent.horizontalCenter
 
                 background: Rectangle {
                     color: parent.pressed ? "#E5E7EB" : (parent.hovered ? "#F3F4F6" : "white")
-                    radius: 16
+                    radius: 12
                 }
 
                 contentItem: Text {
