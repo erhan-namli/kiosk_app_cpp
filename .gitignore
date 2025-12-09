@@ -1,0 +1,69 @@
+# Build directories
+build/
+build-*/
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+
+# Qt generated files
+moc_*.cpp
+moc_*.h
+qrc_*.cpp
+ui_*.h
+*_autogen/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# IDE files
+.vscode/
+.idea/
+*.pro.user
+*.autosave
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs and data
+logs/
+scans/
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+*.orig
+
+# CMake
+CMakeLists.txt.user
+compile_commands.json
+CTestTestfile.cmake
+_deps/
+
+# Qt Creator
+*.qbs.user
+*.pro.user.*
+
+# Python (if any scripts)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+venv/
+env/
+ENV/
+
+# Credentials (safety)
+.env
+credentials.json
+secrets.txt

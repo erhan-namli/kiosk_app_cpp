@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Main.qml</file>
+        <file>screens/LogoScreen.qml</file>
+        <file>screens/PhoneInputScreen.qml</file>
+        <file>screens/CreditPurchaseScreen.qml</file>
+        <file>screens/TapToPayScreen.qml</file>
+        <file>screens/ScanPromptScreen.qml</file>
+        <file>screens/ConfirmationScreen.qml</file>
+    </qresource>
+</RCC>
