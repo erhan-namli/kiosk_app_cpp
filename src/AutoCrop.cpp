@@ -305,7 +305,10 @@ std::vector<cv::Point> AutoCrop::orderPoints(const std::vector<cv::Point>& point
     for (const auto& pt : points) {
         sums.push_back({pt.x + pt.y, pt});
     }
-    std::sort(sums.begin(), sums.end());
+    // Custom comparator that only compares the first element (int)
+    std::sort(sums.begin(), sums.end(), [](const std::pair<int, cv::Point>& a, const std::pair<int, cv::Point>& b) {
+        return a.first < b.first;
+    });
 
     cv::Point topLeft = sums[0].second;
     cv::Point bottomRight = sums[3].second;
@@ -315,7 +318,10 @@ std::vector<cv::Point> AutoCrop::orderPoints(const std::vector<cv::Point>& point
     for (const auto& pt : points) {
         diffs.push_back({pt.y - pt.x, pt});
     }
-    std::sort(diffs.begin(), diffs.end());
+    // Custom comparator that only compares the first element (int)
+    std::sort(diffs.begin(), diffs.end(), [](const std::pair<int, cv::Point>& a, const std::pair<int, cv::Point>& b) {
+        return a.first < b.first;
+    });
 
     cv::Point topRight = diffs[0].second;
     cv::Point bottomLeft = diffs[3].second;
