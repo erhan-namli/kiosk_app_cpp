@@ -15,6 +15,7 @@ find_package(Qt6 REQUIRED COMPONENTS Core Gui Quick Qml Network Concurrent)
 find_package(CURL REQUIRED)
 find_package(JPEG REQUIRED)
 find_package(TIFF REQUIRED)
+find_package(OpenCV REQUIRED)
 
 # Include directories
 include_directories(
@@ -22,6 +23,7 @@ include_directories(
     ${CURL_INCLUDE_DIRS}
     ${JPEG_INCLUDE_DIRS}
     ${TIFF_INCLUDE_DIRS}
+    ${OpenCV_INCLUDE_DIRS}
 )
 
 # Source files
@@ -32,6 +34,7 @@ set(SOURCES
     src/PaymentManager.cpp
     src/EmailManager.cpp
     src/ImageProcessor.cpp
+    src/AutoCrop.cpp
     src/AppSettings.cpp
 )
 
@@ -42,6 +45,7 @@ set(HEADERS
     include/PaymentManager.h
     include/EmailManager.h
     include/ImageProcessor.h
+    include/AutoCrop.h
     include/AppSettings.h
 )
 
@@ -66,6 +70,7 @@ target_link_libraries(${PROJECT_NAME}
     ${CURL_LIBRARIES}
     ${JPEG_LIBRARIES}
     ${TIFF_LIBRARIES}
+    ${OpenCV_LIBS}
     sane
 )
 

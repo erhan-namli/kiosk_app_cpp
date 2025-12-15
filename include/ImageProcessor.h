@@ -5,6 +5,7 @@
 #include <QString>
 #include <QFuture>
 #include "AppSettings.h"
+#include "AutoCrop.h"
 
 class ImageProcessor : public QObject {
     Q_OBJECT
@@ -24,6 +25,7 @@ signals:
 private:
     AppSettings* m_settings;
     QFuture<void> m_processingFuture;
+    AutoCrop m_autoCrop;
 
     void processImageTask(const QString& inputPath, const QString& outputPath);
     bool cropAndConvert(const QString& inputPath, const QString& outputPath);
