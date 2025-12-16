@@ -1,6 +1,8 @@
 #include "AppController.h"
 #include <QUuid>
 #include <QFile>
+#include <QDir>
+#include <QFileInfo>
 #include <QDebug>
 
 AppController::AppController(AppSettings* settings, QObject* parent)
@@ -231,7 +233,26 @@ void AppController::onEmailFailed(const QString& errorMessage) {
 }
 
 void AppController::cleanupScans() {
+    // Create archive directory for storing processed scans
+    QString archiveDir = m_settings->scansDir.filePath("archive");
+    QDir dir;
+    if (!dir.exists(archiveDir)) {
+        dir.mkpath(archiveDir);
+    }
+
+    // Copy scans to archive before cleanup
     for (const QString& scanPath : m_scanPaths) {
+        QFileInfo fileInfo(scanPath);
+        QString archivePath = archiveDir + "/" + fileInfo.fileName();
+
+        // Copy to archive
+        if (QFile::copy(scanPath, archivePath)) {
+            qInfo() << "Archived scan to:" << archivePath;
+        } else {
+            qWarning() << "Failed to archive scan:" << scanPath;
+        }
+
+        // Remove temporary file
         QFile::remove(scanPath);
     }
     m_scanPaths.clear();
